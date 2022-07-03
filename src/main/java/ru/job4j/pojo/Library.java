@@ -31,7 +31,7 @@ public class Library {
         }
         System.out.println("Only books with the title 'Clean code':");
         for (int index = 0; index < lib.length; index++) {
-            if (lib[index].getTitle().equals("Clean code")) {
+            if ("Clean code".equals(lib[index].getTitle())) {
                 System.out.println("\"" + lib[index].getTitle() + "\"" + ", " + lib[index].getPages() + " pages.");
             }
         }
