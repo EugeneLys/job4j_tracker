@@ -15,7 +15,7 @@ public class StartUITest {
         StartUI.createItem(input, tracker);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
-        assertThat(created.getName(), is(expected.getName()));
+        Assert.assertEquals(created.getName(), expected.getName());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class StartUITest {
         };
         StartUI.editItem(new StubInput(answers), tracker);
         Item edited = tracker.findById(item.getId());
-        assertThat(edited.getName(), is("edited item"));
+        Assert.assertEquals(edited.getName(), "edited item");
     }
 
     @Test
