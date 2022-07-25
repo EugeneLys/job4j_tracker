@@ -1,7 +1,5 @@
 package ru.job4j.strategy;
 
-import java.sql.SQLOutput;
-
 public class Paint {
     public void draw (Shape shape) {
         System.out.println(shape.draw());
