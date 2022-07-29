@@ -12,4 +12,9 @@ public class StubOutput implements Output {
         }
         buffer.append(System.lineSeparator());
     }
+
+    @Override
+    public String toString() {
+        return buffer.toString();
+    }
 }
