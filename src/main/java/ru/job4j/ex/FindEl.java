@@ -9,6 +9,9 @@ public class FindEl {
                 break;
             }
         }
+        if (rsl == -1) {
+            throw new ElementNotFoundException("No such element in the array.");
+        }
         return rsl;
     }
 
