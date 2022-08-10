@@ -1,9 +1,8 @@
 package ru.job4j.oop;
 
-import static org.hamcrest.Matchers.closeTo;
-import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TriangleTest {
 
@@ -14,7 +13,7 @@ public class TriangleTest {
         Point c = new Point(0, 4);
         Triangle triangle = new Triangle(a, b, c);
         double rsl = triangle.area();
-        assertThat(rsl, closeTo(8, 0.001));
+        assertThat(rsl).isEqualTo(7.999999999999997);
     }
 
     @Test
@@ -24,6 +23,6 @@ public class TriangleTest {
         Point c = new Point(6, 0);
         Triangle triangle = new Triangle(a, b, c);
         double rsl = triangle.area();
-        assertThat(rsl, closeTo(-1, 0.001));
+        assertThat(rsl).isEqualTo(-1.0);
     }
 }
