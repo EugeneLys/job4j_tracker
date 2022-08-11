@@ -167,4 +167,26 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertNull(tracker.findById(item.getId()));
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"1", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        Assert.assertEquals(out.toString(),
+                "Menu:" + ln
+                        + "0. Exit program" + ln
+                        + "Wrong input, you can select: 0 ... 0" + ln
+                        + "Menu:" + ln
+                        + "0. Exit program" + ln
+                        + "Program execution is finished" + ln
+        );
+    }
 }
