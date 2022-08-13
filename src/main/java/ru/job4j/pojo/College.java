@@ -10,6 +10,7 @@ public class College {
         student.setGroup(1);
         student.setEnter(new Date());
         System.out.println("Студент: " + student.getName()
-                + ", номер группы: " + student.getGroup() + ", дата поступления: " + student.getEnter());
+                + ", номер группы: " + student.getGroup() + ", дата поступления: "
+                + student.getEnter());
     }
 }

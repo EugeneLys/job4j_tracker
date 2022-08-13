@@ -13,7 +13,8 @@ public class Library {
         lib[3] = clean;
         System.out.println("My library at first: ");
         for (int index = 0; index < lib.length; index++) {
-            System.out.println("\"" + lib[index].getTitle() + "\"" + ", " + lib[index].getPages() + " pages.");
+            System.out.println("\"" + lib[index].getTitle() + "\"" + ", " + lib[index].getPages()
+                    + " pages.");
             if (index == lib.length - 1) {
                 System.out.println();
             }
@@ -24,7 +25,8 @@ public class Library {
         lib[3] = temp;
         System.out.println("My library after change: ");
         for (int index = 0; index < lib.length; index++) {
-            System.out.println("\"" + lib[index].getTitle() + "\"" + ", " + lib[index].getPages() + " pages.");
+            System.out.println("\"" + lib[index].getTitle() + "\"" + ", "
+                    + lib[index].getPages() + " pages.");
             if (index == lib.length - 1) {
                 System.out.println();
             }
@@ -32,7 +34,8 @@ public class Library {
         System.out.println("Only books with the title 'Clean code':");
         for (int index = 0; index < lib.length; index++) {
             if ("Clean code".equals(lib[index].getTitle())) {
-                System.out.println("\"" + lib[index].getTitle() + "\"" + ", " + lib[index].getPages() + " pages.");
+                System.out.println("\"" + lib[index].getTitle() + "\"" + ", "
+                        + lib[index].getPages() + " pages.");
             }
         }
     }
