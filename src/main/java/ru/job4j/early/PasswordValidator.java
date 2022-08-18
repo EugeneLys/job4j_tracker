@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PasswordValidator {
 
-    public static String validate(String password) {
+    public static String validate(String password) throws IllegalArgumentException {
         if (password == null) {
             throw new IllegalArgumentException("Please enter the password.");
         }
@@ -41,8 +41,8 @@ public class PasswordValidator {
 
     public static boolean checkDigit(char[] array) {
         boolean check = false;
-        for (int i = 0; i < array.length; i++) {
-            if (Character.isDigit(array[i])) {
+        for (char c : array) {
+            if (Character.isDigit(c)) {
                 check = true;
                 break;
             }
@@ -52,8 +52,8 @@ public class PasswordValidator {
 
     public static boolean checkLetter(char[] array) {
         boolean check = false;
-        for (int i = 0; i < array.length; i++) {
-            if (Character.isLetter(array[i])) {
+        for (char c : array) {
+            if (Character.isLetter(c)) {
                 check = true;
                 break;
             }
@@ -63,8 +63,8 @@ public class PasswordValidator {
 
     public static boolean checkUpperCase(char[] array) {
         boolean check = false;
-        for (int i = 0; i < array.length; i++) {
-            if (Character.isUpperCase(array[i])) {
+        for (char c : array) {
+            if (Character.isUpperCase(c)) {
                 check = true;
                 break;
             }
@@ -74,8 +74,8 @@ public class PasswordValidator {
 
     public static boolean checkLowerCase(char[] array) {
         boolean check = false;
-        for (int i = 0; i < array.length; i++) {
-            if (Character.isLowerCase(array[i])) {
+        for (char c : array) {
+            if (Character.isLowerCase(c)) {
                 check = true;
                 break;
             }
@@ -85,8 +85,8 @@ public class PasswordValidator {
 
     public static boolean checkLetterOrDigit(char[] array) {
         boolean check = false;
-        for (int i = 0; i < array.length; i++) {
-            if (!Character.isLetterOrDigit(array[i])) {
+        for (char c : array) {
+            if (!Character.isLetterOrDigit(c)) {
                 check = true;
                 break;
             }
@@ -99,12 +99,26 @@ public class PasswordValidator {
         for (int i = 0; i < array.length; i++) {
             array[i] = Character.toUpperCase(array[i]);
         }
-        if (Arrays.equals(array, new char[]{'Q', 'W', 'E', 'R', 'T', 'Y'})
-            || Arrays.equals(array, new char[]{'1', '2', '3', '4', '5'})
-            || Arrays.equals(array, new char[]{'P', 'A', 'S', 'S', 'W', 'O', 'R', 'D'})
-            || Arrays.equals(array, new char[]{'A', 'D', 'M', 'I', 'N'})
-            || Arrays.equals(array, new char[]{'U', 'S', 'E', 'R'})) {
-            check = true;
+        char[][] keywords = new char[5][];
+        keywords[0] = new char[]{'Q', 'W', 'E', 'R', 'T', 'Y'};
+        keywords[1] = new char[]{'1', '2', '3', '4', '5'};
+        keywords[2] = new char[]{'P', 'A', 'S', 'S', 'W', 'O', 'R', 'D'};
+        keywords[3] = new char[]{'A', 'D', 'M', 'I', 'N'};
+        keywords[4] = new char[]{'U', 'S', 'E', 'R'};
+        char[] controller = new char[array.length];
+        int count = 0;
+        for (char[] keyword : keywords) {
+            for (int j = 0; j < array.length; j++) {
+                while (array[j] == keyword[count]) {
+                    controller[count] = array[j];
+                    count++;
+                    j++;
+                    if (Arrays.equals(Arrays.copyOf(controller, count), keyword)) {
+                        return !check;
+                    }
+                }
+                count = 0;
+            }
         }
         return check;
     }
