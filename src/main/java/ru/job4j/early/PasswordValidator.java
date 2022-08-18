@@ -33,7 +33,7 @@ public class PasswordValidator {
             throw new IllegalArgumentException("You should use at least one "
                     + "special symbol (not digit or letter) in the password.");
         }
-        if (!checkObvious(symbols)) {
+        if (checkObvious(symbols)) {
             throw new IllegalArgumentException("Your password is too obvious, choose another one.");
         }
         return "Your password is OK.";
@@ -86,7 +86,7 @@ public class PasswordValidator {
     public static boolean checkLetterOrDigit(char[] array) {
         boolean check = false;
         for (int i = 0; i < array.length; i++) {
-            if (Character.isLetterOrDigit(array[i])) {
+            if (!Character.isLetterOrDigit(array[i])) {
                 check = true;
                 break;
             }
