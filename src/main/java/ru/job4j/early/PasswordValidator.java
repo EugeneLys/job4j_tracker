@@ -43,8 +43,7 @@ public class PasswordValidator {
         boolean check = false;
         for (char c : array) {
             if (Character.isDigit(c)) {
-                check = true;
-                break;
+                return !check;
             }
         }
         return check;
@@ -54,8 +53,7 @@ public class PasswordValidator {
         boolean check = false;
         for (char c : array) {
             if (Character.isLetter(c)) {
-                check = true;
-                break;
+                return !check;
             }
         }
         return check;
@@ -65,8 +63,7 @@ public class PasswordValidator {
         boolean check = false;
         for (char c : array) {
             if (Character.isUpperCase(c)) {
-                check = true;
-                break;
+                return !check;
             }
         }
         return check;
@@ -76,8 +73,7 @@ public class PasswordValidator {
         boolean check = false;
         for (char c : array) {
             if (Character.isLowerCase(c)) {
-                check = true;
-                break;
+                return !check;
             }
         }
         return check;
@@ -87,8 +83,7 @@ public class PasswordValidator {
         boolean check = false;
         for (char c : array) {
             if (!Character.isLetterOrDigit(c)) {
-                check = true;
-                break;
+                return !check;
             }
         }
         return check;
