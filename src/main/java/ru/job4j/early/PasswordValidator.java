@@ -93,15 +93,13 @@ public class PasswordValidator {
         keywords[2] = new char[]{'P', 'A', 'S', 'S', 'W', 'O', 'R', 'D'};
         keywords[3] = new char[]{'A', 'D', 'M', 'I', 'N'};
         keywords[4] = new char[]{'U', 'S', 'E', 'R'};
-        char[] controller = new char[array.length];
         int count = 0;
         for (char[] keyword : keywords) {
             for (int j = 0; j < array.length; j++) {
                 while (array[j] == keyword[count]) {
-                    controller[count] = array[j];
                     count++;
                     j++;
-                    if (Arrays.equals(Arrays.copyOf(controller, count), keyword)) {
+                    if (count == keyword.length) {
                         return true;
                     }
                 }
