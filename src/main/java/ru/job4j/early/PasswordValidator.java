@@ -1,5 +1,4 @@
 package ru.job4j.early;
-
 import java.util.Arrays;
 
 public class PasswordValidator {
