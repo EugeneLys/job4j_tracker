@@ -40,57 +40,51 @@ public class PasswordValidator {
     }
 
     public static boolean checkDigit(char[] array) {
-        boolean check = false;
         for (char c : array) {
             if (Character.isDigit(c)) {
-                return !check;
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
     public static boolean checkLetter(char[] array) {
-        boolean check = false;
         for (char c : array) {
             if (Character.isLetter(c)) {
-                return !check;
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
     public static boolean checkUpperCase(char[] array) {
-        boolean check = false;
         for (char c : array) {
             if (Character.isUpperCase(c)) {
-                return !check;
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
     public static boolean checkLowerCase(char[] array) {
-        boolean check = false;
         for (char c : array) {
             if (Character.isLowerCase(c)) {
-                return !check;
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
     public static boolean checkLetterOrDigit(char[] array) {
-        boolean check = false;
         for (char c : array) {
             if (!Character.isLetterOrDigit(c)) {
-                return !check;
+                return true;
             }
         }
-        return check;
+        return false;
     }
 
     public static boolean checkObvious(char[] array) {
-        boolean check = false;
         for (int i = 0; i < array.length; i++) {
             array[i] = Character.toUpperCase(array[i]);
         }
@@ -109,12 +103,12 @@ public class PasswordValidator {
                     count++;
                     j++;
                     if (Arrays.equals(Arrays.copyOf(controller, count), keyword)) {
-                        return !check;
+                        return true;
                     }
                 }
                 count = 0;
             }
         }
-        return check;
+        return false;
     }
 }
