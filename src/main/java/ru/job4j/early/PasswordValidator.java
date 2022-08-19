@@ -98,7 +98,9 @@ public class PasswordValidator {
             for (int j = 0; j < array.length; j++) {
                 while (array[j] == keyword[count]) {
                     count++;
-                    j++;
+                    if (j < array.length - 1) {
+                        j++;
+                    }
                     if (count == keyword.length) {
                         return true;
                     }

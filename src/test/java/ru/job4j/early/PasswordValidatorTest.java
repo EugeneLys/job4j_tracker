@@ -7,7 +7,7 @@ class PasswordValidatorTest {
 
     @Test
     public void whenCorrect() {
-        Assertions.assertEquals(PasswordValidator.validate("A1b_5678"), "Your password is OK.");
+        Assertions.assertEquals(PasswordValidator.validate("QwErt_1234"), "Your password is OK.");
     }
 
     @Test
