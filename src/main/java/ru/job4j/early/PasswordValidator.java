@@ -32,7 +32,7 @@ public class PasswordValidator {
             throw new IllegalArgumentException("You should use at least one "
                     + "special symbol (not digit or letter) in the password.");
         }
-        if (checkObvious(symbols)) {
+        if (checkObvious(password)) {
             throw new IllegalArgumentException("Your password is too obvious, choose another one.");
         }
         return "Your password is OK.";
@@ -83,31 +83,11 @@ public class PasswordValidator {
         return false;
     }
 
-    public static boolean checkObvious(char[] array) {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = Character.toUpperCase(array[i]);
-        }
-        char[][] keywords = new char[5][];
-        keywords[0] = new char[]{'Q', 'W', 'E', 'R', 'T', 'Y'};
-        keywords[1] = new char[]{'1', '2', '3', '4', '5'};
-        keywords[2] = new char[]{'P', 'A', 'S', 'S', 'W', 'O', 'R', 'D'};
-        keywords[3] = new char[]{'A', 'D', 'M', 'I', 'N'};
-        keywords[4] = new char[]{'U', 'S', 'E', 'R'};
-        int count = 0;
-        for (char[] keyword : keywords) {
-            for (int j = 0; j < array.length; j++) {
-                while (array[j] == keyword[count]) {
-                    count++;
-                    if (j < array.length - 1) {
-                        j++;
-                    }
-                    if (count == keyword.length) {
-                        return true;
-                    }
-                }
-                count = 0;
-            }
-        }
-        return false;
+    public static boolean checkObvious(String password) {
+        return password.toUpperCase().contains("QWERTY")
+                || password.toUpperCase().contains("USER")
+                || password.toUpperCase().contains("ADMIN")
+                || password.toUpperCase().contains("PASSWORD")
+                || password.toUpperCase().contains("12345");
     }
 }
