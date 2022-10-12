@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -36,7 +37,7 @@ public class TrackerTest {
         Item second = new Item("Second");
         tracker.add(first);
         tracker.add(second);
-        ArrayList<Item> result = tracker.findAll();
+        List<Item> result = tracker.findAll();
         assertThat(result.get(0).getName(), is(first.getName()));
     }
 
@@ -50,7 +51,7 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
-        ArrayList<Item> result = tracker.findByName(first.getName());
+        List<Item> result = tracker.findByName(first.getName());
         assertThat(result.size(), is(3));
     }
 
@@ -64,7 +65,7 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
-        ArrayList<Item> result = tracker.findByName(second.getName());
+        List<Item> result = tracker.findByName(second.getName());
         assertThat(result.get(1).getName(), is(second.getName()));
     }
 
