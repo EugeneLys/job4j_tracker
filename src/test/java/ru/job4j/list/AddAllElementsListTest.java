@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class AddAllElementsListTest {
         right.add("fifth");
         String check = "second";
         int result = AddAllElementsList.containsElement(left, right, check);
-        assertThat(result, is(3));
+        Assertions.assertEquals(result, 3);
     }
 
     @Test
@@ -35,6 +36,6 @@ public class AddAllElementsListTest {
         right.add("fifth");
         String check = "second";
         int result = AddAllElementsList.containsElement(left, right, check);
-        assertThat(result, is(1));
+        Assertions.assertEquals(result, 1);
     }
 }

@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,6 @@ public class AddElementTest {
         list.add("second");
         list.add("third");
         boolean result = AddElement.addNewElement(list, "fourth");
-        assertThat(result, is(true));
+        Assertions.assertTrue(result);
     }
 }

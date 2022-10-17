@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class CheckerAhdGetterTest {
         List<String> list = new ArrayList<>();
         String result = CheckerAhdGetter.getElement(list);
         String expected = "";
-        assertThat(result, is(expected));
+        Assertions.assertEquals(result, expected);
     }
 
     @Test
@@ -25,6 +26,6 @@ public class CheckerAhdGetterTest {
         list.add("third");
         String result = CheckerAhdGetter.getElement(list);
         String expected = "first";
-        assertThat(result, is(expected));
+        Assertions.assertEquals(result, expected);
     }
 }

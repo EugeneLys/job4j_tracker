@@ -1,6 +1,7 @@
 package ru.job4j.set;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -10,13 +11,13 @@ public class IsogramTest {
     public void checkStringTrue() {
         String s = "uncopyrightables";
         boolean b = Isogram.checkString(s);
-        assertThat(b, is(true));
+        Assertions.assertTrue(b);
     }
 
     @Test
     public void checkStringFalse() {
         String s = "javascript";
         boolean b = Isogram.checkString(s);
-        assertThat(b, is(false));
+        Assertions.assertFalse(b);
     }
 }

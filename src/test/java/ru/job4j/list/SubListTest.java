@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +32,13 @@ public class SubListTest {
     public void getElementsBetweenIndexes() {
         List<String> result = SubList.getElementsBetweenIndexes(list, "three");
         List<String> expected = List.of("three", "four", "five", "six", "seven", "eight");
-        assertThat(result, is(expected));
+        Assertions.assertEquals(result, expected);
     }
 
     @Test
     public void getElementsBetweenIndexesEmptyList() {
         List<String> result = SubList.getElementsBetweenIndexes(list, "five");
         List<String> expected = List.of();
-        assertThat(result, is(expected));
+        Assertions.assertEquals(result, expected);
     }
 }

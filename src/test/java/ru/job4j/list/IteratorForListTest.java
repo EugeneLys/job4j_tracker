@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -21,6 +22,6 @@ public class IteratorForListTest {
                 + "Next element has - true, this element is four" + ln
                 + "Next element has - true, this element is five" + ln
                 + "Next element has - false" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 }

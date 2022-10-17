@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +31,15 @@ public class RepositionElementTest {
     public void changePosition() {
         int index = 3;
         List<String> result = RepositionElement.changePosition(list, index);
-        assertThat(result.size(), is(8));
-        assertThat(result.get(index), is("nine"));
+        Assertions.assertEquals(result.size(), 8);
+        Assertions.assertEquals(result.get(index), "nine");
     }
 
     @Test
     public void changePositionNone() {
         int index = 20;
         List<String> result = RepositionElement.changePosition(list, index);
-        assertThat(result.size(), is(8));
-        assertThat(result.contains("nine"), is(false));
+        Assertions.assertEquals(result.size(), 8);
+        Assertions.assertFalse(result.contains("nine"));
     }
 }

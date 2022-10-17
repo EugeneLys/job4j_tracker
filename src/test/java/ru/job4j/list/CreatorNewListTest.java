@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -20,6 +21,6 @@ public class CreatorNewListTest {
                 + "Создаем список - в конструктор передаем коллекцию." + ln
                 + "Выводим все элементы в списке." + ln
                 + "one" + ln + "two" + ln + "three" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 }

@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,6 @@ public class SplitterListTest {
                 "two", "five", "nine"
         );
         List<String> rsl = SplitterList.split(left, middle, right);
-        assertThat(rsl, is(List.of("one", "four", "seven", "eight")));
+        Assertions.assertEquals(rsl, List.of("one", "four", "seven", "eight"));
     }
 }
