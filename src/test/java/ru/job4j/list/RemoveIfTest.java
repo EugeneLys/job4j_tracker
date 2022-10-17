@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,6 @@ public class RemoveIfTest {
         list.add("ten");
         List<String> expected = List.of("three", "seven", "eight");
         List<String> result = RemoveIf.sortList(list);
-        assertThat(result, is(expected));
+        Assertions.assertEquals(result, expected);
     }
 }

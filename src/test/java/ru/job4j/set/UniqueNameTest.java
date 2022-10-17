@@ -1,6 +1,7 @@
 package ru.job4j.set;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public class UniqueNameTest {
         );
         int rsl = UniqueName.collectUniqueName(users);
         int expected = 4;
-        assertThat(rsl, is(expected));
+        Assertions.assertEquals(rsl, expected);
     }
 }

@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ArProgressionTest {
                 26, 31, 36, 41, 46
         );
         int rsl = ArProgression.checkData(data);
-        assertThat(rsl, is(235));
+        Assertions.assertEquals(rsl, 235);
     }
 
     @Test
@@ -25,6 +26,6 @@ public class ArProgressionTest {
                 26, 31, 36, 41, 46
         );
         int rsl = ArProgression.checkData(data);
-        assertThat(rsl, is(0));
+        Assertions.assertEquals(rsl, 0);
     }
 }

@@ -1,6 +1,7 @@
 package ru.job4j.list;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class UniqueElementTest {
         list.add("second");
         list.add("third");
         boolean result = UniqueElement.checkList(list, "second");
-        assertThat(result, is(true));
+        Assertions.assertTrue(result);
     }
 
     @Test
@@ -28,7 +29,7 @@ public class UniqueElementTest {
         list.add("second");
         list.add("fourth");
         boolean result = UniqueElement.checkList(list, "second");
-        assertThat(result, is(false));
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -38,6 +39,6 @@ public class UniqueElementTest {
         list.add("second");
         list.add("third");
         boolean result = UniqueElement.checkList(list, "fourth");
-        assertThat(result, is(false));
+        Assertions.assertFalse(result);
     }
 }
