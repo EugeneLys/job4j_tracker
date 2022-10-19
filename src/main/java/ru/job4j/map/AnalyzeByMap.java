@@ -66,12 +66,12 @@ public class AnalyzeByMap {
     public static Label bestSubject(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            Integer score = 0;
             for (Subject sub : pupil.subjects()) {
-                if (map.get(sub.name()) == null) {
+                Integer initial = map.get(sub.name());
+                if (initial == null) {
                     map.put(sub.name(), sub.score());
                 } else {
-                    map.put(sub.name(), map.get(sub.name()) + sub.score());
+                    map.put(sub.name(), initial + sub.score());
                 }
             }
         }
