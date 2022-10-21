@@ -9,45 +9,33 @@ public class ItemComparatorTest {
 
     @Test
     public void whenItemAscByName() {
-        List<Item> items = new ArrayList<>();
-        items.add(0, new Item(2, "bbb"));
-        items.add(1, new Item(3, "ccc"));
-        items.add(2, new Item(1, "aaa"));
+        List<Item> items = Arrays.asList(
+        new Item(2, "bbb"),
+        new Item(3, "ccc"),
+        new Item(1, "aaa")
+        );
         items.sort(new ItemAscByName());
-        List<Item> expected = new ArrayList<>();
-        expected.add(0, new Item(1, "aaa"));
-        expected.add(1, new Item(2, "bbb"));
-        expected.add(2, new Item(3, "ccc"));
-        ArrayList<Integer> itemsID = new ArrayList<>();
-        for (Item item : items) {
-            itemsID.add(item.getId());
-        }
-        ArrayList<Integer> expectedID = new ArrayList<>();
-        for (Item exp : expected) {
-            expectedID.add(exp.getId());
-        }
-        Assertions.assertEquals(itemsID, expectedID);
+        List<Item> expected = Arrays.asList(
+        new Item(1, "aaa"),
+        new Item(2, "bbb"),
+        new Item(3, "ccc")
+        );
+        Assertions.assertArrayEquals(items.toArray(), expected.toArray());
     }
 
     @Test
     public void whenItemDescByName() {
-        List<Item> items = new ArrayList<>();
-        items.add(0, new Item(111, "A111"));
-        items.add(1, new Item(222, "B222"));
-        items.add(2, new Item(333, "C333"));
+        List<Item> items = Arrays.asList(
+        new Item(111, "A111"),
+        new Item(222, "B222"),
+        new Item(333, "C333")
+                );
         items.sort(new ItemDescByName());
-        List<Item> expected = new ArrayList<>();
-        expected.add(0, new Item(333, "C333"));
-        expected.add(1, new Item(222, "B222"));
-        expected.add(2, new Item(111, "A111"));
-        ArrayList<Integer> itemsID = new ArrayList<>();
-        for (Item item : items) {
-            itemsID.add(item.getId());
-        }
-        ArrayList<Integer> expectedID = new ArrayList<>();
-        for (Item exp : expected) {
-            expectedID.add(exp.getId());
-        }
-        Assertions.assertEquals(itemsID, expectedID);
+        List<Item> expected = Arrays.asList(
+        new Item(333, "C333"),
+        new Item(222, "B222"),
+        new Item(111, "A111")
+        );
+        Assertions.assertArrayEquals(items.toArray(), expected.toArray());
     }
 }
