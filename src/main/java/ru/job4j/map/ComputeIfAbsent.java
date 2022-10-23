@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class ComputeIfAbsent {
     public static Map<Integer, String> collectData(Map<Integer, String> names, List<User> users) {
-        for (Integer integer : names.keySet()) {
-            names.computeIfPresent(integer, (Integer, String) -> String
-                    + " " + surname.get(integer));
+        for (User user : users) {
+            names.computeIfPresent(user.id, (Integer, String) -> user.name);
+            names.computeIfAbsent(user.id, (Integer) -> user.name);
         }
         return names;
     }
@@ -32,8 +32,12 @@ public class ComputeIfAbsent {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             ComputeIfAbsent.User user = (ComputeIfAbsent.User) o;
             return Objects.equals(name, user.name);
         }
