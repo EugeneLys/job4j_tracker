@@ -20,7 +20,7 @@ public class ItemComparatorTest {
         new Item(2, "bbb"),
         new Item(3, "ccc")
         );
-        Assertions.assertArrayEquals(items.toArray(), expected.toArray());
+        Assertions.assertEquals(items, expected);
     }
 
     @Test
@@ -36,6 +36,6 @@ public class ItemComparatorTest {
         new Item(222, "B222"),
         new Item(111, "A111")
         );
-        Assertions.assertArrayEquals(items.toArray(), expected.toArray());
+        Assertions.assertEquals(items, expected);
     }
 }
