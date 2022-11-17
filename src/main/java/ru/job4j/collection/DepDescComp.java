@@ -9,24 +9,7 @@ public class DepDescComp implements Comparator<String> {
         int count = 0;
         String[] leftSplit = left.split("/");
         String[] rightSplit = right.split("/");
-        int size = Math.min(leftSplit[count].length(), rightSplit[count].length());
-        int countMax = Math.min(leftSplit.length, rightSplit.length) - 1;
-        for (int i = 0; i < size; i++) {
-            rsl = Character.compare(rightSplit[count].charAt(i), leftSplit[count].charAt(i));
-            if (rsl != 0) {
-                return rsl;
-            }
-        }
-        while (count < countMax) {
-            count++;
-            int max = Math.min(leftSplit[count].length(), rightSplit[count].length());
-            for (int i = 0; i < max; i++) {
-                rsl = Character.compare(leftSplit[count].charAt(i), rightSplit[count].charAt(i));
-                if (rsl != 0) {
-                    return rsl;
-                }
-            }
-        }
-        return Integer.compare(left.length(), right.length());
+        int result = rightSplit[0].compareTo(leftSplit[0]);
+        return result != 0 ? result : left.compareTo(right);
     }
 }
