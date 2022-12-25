@@ -5,32 +5,33 @@ import java.util.Deque;
 
 public class ReconstructPhrase {
 
-    private final Queue<Character> descendingElements;
+    private final Deque<Character> descendingElements;
 
-    private final Queue<Character> evenElements;
+    private final Deque<Character> evenElements;
 
-    public ReconstructPhrase(Queue<Character> descendingElements, Queue<Character> evenElements) {
+    public ReconstructPhrase(Deque<Character> descendingElements, Deque<Character> evenElements) {
         this.descendingElements = descendingElements;
         this.evenElements = evenElements;
     }
 
     private String getEvenElements() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 1; i < evenElements.size(); i = i + 2) {
+        for (int i = 0; evenElements.size() > 0; i++) {
             builder.append(evenElements.poll());
+            evenElements.poll();
         }
         return builder.toString();
     }
 
     private String getDescendingElements() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < descendingElements.size(); i++) {
+        for (int i = 0; descendingElements.size() > 0; i++) {
             builder.append(descendingElements.pollLast());
         }
         return builder.toString();
     }
 
     public String getReconstructPhrase() {
-        return getDescendingElements() + getEvenElements();
+        return getEvenElements() + getDescendingElements();
     }
 }
