@@ -24,17 +24,7 @@ public class AttachmentSort {
         Comparator<Attachment> comparatorByName = new Comparator<Attachment>() {
             @Override
             public int compare(Attachment left, Attachment right) {
-                String leftName = left.getName();
-                String rightName = right.getName();
-                int rsl;
-                int size = Math.min(leftName.length(), rightName.length());
-                for (int i = 0; i < size; i++) {
-                    rsl = Character.compare(leftName.charAt(i), rightName.charAt(i));
-                    if (rsl != 0) {
-                        return rsl;
-                    }
-                }
-                return Integer.compare(leftName.length(), rightName.length());
+                return left.getName().compareTo(right.getName());
             }
         };
     }
