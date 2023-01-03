@@ -20,7 +20,7 @@ public class FI {
           "Third string"
         };
         Comparator<String> cmpSize = (left, right)
-                -> Integer.compare(left.length(), right.length());
+                -> left.compareTo(right);
         Comparator<String> cmpDescSize = (left, right)
                 -> Integer.compare(right.length(), left.length());
         Arrays.sort(str, cmpSize);
