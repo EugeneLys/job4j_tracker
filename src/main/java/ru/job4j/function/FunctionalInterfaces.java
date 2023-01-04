@@ -10,48 +10,27 @@ public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = (key, val) -> map.put(key, val);
-        List<String> strings = List.of("one", "two", "three", "four",
+        List<String> str = List.of("one", "two", "three", "four",
                 "five", "six", "seven");
-        int i = 1;
-        for (String s : strings) {
-            biCon.accept(i++, s);
+        int j = 1;
+        for (String s : str) {
+            biCon.accept(j++, s);
         }
 
-        /*
-            Замените вставку элементов в карту на использование BiConsumer, он уже объявлен, требуется его реализовать.
-         */
-        map.put(1, "one");
-        map.put(2, "two");
-        map.put(3, "three");
-        map.put(4, "four");
-        map.put(5, "five");
-        map.put(6, "six");
-        map.put(7, "seven");
-
-        BiPredicate<Integer, String> biPred = ...;
+        BiPredicate<Integer, String> biPred = (key, val) -> key % 2 == 0 || val.length() == 4;
         for (Integer i : map.keySet()) {
-            /*
-                Замените проверку в if() на использование BiPredicate, он объявлен выше, требуется его реализовать.
-             */
-            if (i % 2 == 0 || map.get(i).length() == 4) {
+            if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
-        /*
-            Заменить создание ArrayList из значений Map на Supplier, объявлен ниже, требуется его реализовать.
-         */
-        Supplier<List<String>> sup = ...;
-        List<String> strings = new ArrayList<>(map.values());
 
-        Consumer<String> con = ...;
-        Function<String, String> func = ...;
+        Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
+        List<String> strings = sup.get();
+        Consumer<String> con = (s) -> System.out.println(s);
+        Function<String, String> func = s -> s.toUpperCase();
         for (String s : strings) {
-            /*
-                Заменить вывод строк на применение Consumer
-                Заменить преобразование строк к строкам в верхнем регистре с помощью Function
-                Необходимое объявлено выше, требуется их реализовать.
-            */
-            System.out.println(s.toUpperCase());
+            func.apply(s);
+            con.accept(s);
         }
     }
 }
