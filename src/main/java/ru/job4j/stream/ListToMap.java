@@ -9,6 +9,6 @@ public class ListToMap {
     public static Map<String, Student> convert(List<Student> list) {
         return list.stream()
                 .distinct()
-                .collect(Collectors.toMap(e -> e.getSurname(), e -> e, (ex, rep) -> ex));
+                .collect(Collectors.toMap(Student::getSurname, e -> e, (ex, rep) -> ex));
     }
 }
