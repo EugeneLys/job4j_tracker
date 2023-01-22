@@ -2,6 +2,7 @@ package ru.job4j.bank;
 
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Класс описывает банковскую систему (сервис) и методы управления
@@ -78,7 +79,6 @@ public class BankService {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-
         Account src = findByRequisite(srcPassport, srcRequisite);
         Account dest = findByRequisite(destPassport, destRequisite);
         if (src == null || dest == null || src.getBalance() < amount) {
