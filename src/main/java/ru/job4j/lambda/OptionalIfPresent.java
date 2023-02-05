@@ -9,7 +9,7 @@ public class OptionalIfPresent {
 
     public static void ifPresent(int[] data) {
         Optional var = max(data);
-        if(var.isPresent()) {
+        if (var.isPresent()) {
             System.out.println("Max: " + var.get());
         }
     }

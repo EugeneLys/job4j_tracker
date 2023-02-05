@@ -42,6 +42,9 @@ public class CountingMethod {
     }
 
     public static Map<String, Long> groupAndCount(List<Worker> workers) {
-        return workers.stream().collect(Collectors.groupingBy((Worker worker) -> worker.getCompany().getName(), Collectors.counting()));
+        return workers
+                .stream()
+                .collect(Collectors.groupingBy((Worker worker) -> worker.getCompany().getName(),
+                        Collectors.counting()));
     }
 }
