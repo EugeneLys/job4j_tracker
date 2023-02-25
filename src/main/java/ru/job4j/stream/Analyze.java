@@ -38,17 +38,16 @@ public class Analyze {
                                 .mapToInt(Subject::score)
                                 .sum()))
                 .max(Comparator.comparing(Tuple::score))
-                .orElse(new Tuple("not found", 0));
+                .orElse(null);
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
         return stream
                 .flatMap(pupil -> pupil.subjects().stream())
-                .collect(Collectors.groupingBy(Subject::name,
-                LinkedHashMap::new, Collectors.summingDouble(Subject::score)))
+                .collect(Collectors.groupingBy(Subject::name, Collectors.summingDouble(Subject::score)))
                 .entrySet().stream()
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
                 .max(Comparator.comparing(Tuple::score))
-                .orElse(new Tuple("not found", 0));
+                .orElse(null);
     }
 }
