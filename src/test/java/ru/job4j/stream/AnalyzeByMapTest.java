@@ -3,6 +3,8 @@ package ru.job4j.stream;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
 
@@ -10,7 +12,7 @@ class AnalyzeByMapTest {
     @Test
     public void whenAverageScore() {
         double average = Analyze.averageScore(
-                List.of(
+                Stream.of(
                         new Pupil("Ivanov",
                                 List.of(
                                         new Subject("Math", 100),
@@ -32,7 +34,7 @@ class AnalyzeByMapTest {
                                         new Subject("Philosophy", 50)
                                 )
                         )
-                ).stream()
+                )
         );
         assertThat(average).isCloseTo(74.44, offset(0.01D));
     }
@@ -40,7 +42,7 @@ class AnalyzeByMapTest {
     @Test
     public void whenListOfPupilAverage() {
         List<Tuple> average = Analyze.averageScoreByPupil(
-                List.of(
+                Stream.of(
                         new Pupil("Ivanov",
                                 List.of(
                                         new Subject("Math", 100),
@@ -62,7 +64,7 @@ class AnalyzeByMapTest {
                                         new Subject("Philosophy", 50)
                                 )
                         )
-                ).stream()
+                )
         );
         assertThat(average).hasSameElementsAs(List.of(
                 new Tuple("Ivanov", 80D),
@@ -74,7 +76,7 @@ class AnalyzeByMapTest {
     @Test
     public void whenListOfSubjectAverage() {
         List<Tuple> average = Analyze.averageScoreBySubject(
-                List.of(
+                Stream.of(
                         new Pupil("Ivanov",
                                 List.of(
                                         new Subject("Math", 70),
@@ -96,7 +98,7 @@ class AnalyzeByMapTest {
                                         new Subject("Philosophy", 50)
                                 )
                         )
-                ).stream()
+                )
         );
         assertThat(average).hasSameElementsAs(List.of(
                 new Tuple("Math", 70D),
@@ -108,7 +110,7 @@ class AnalyzeByMapTest {
     @Test
     public void whenBestPupil() {
         Tuple best = Analyze.bestStudent(
-                List.of(
+                Stream.of(
                         new Pupil("Ivanov",
                                 List.of(
                                         new Subject("Math", 100),
@@ -130,7 +132,7 @@ class AnalyzeByMapTest {
                                         new Subject("Philosophy", 50)
                                 )
                         )
-                ).stream()
+                )
         );
         assertThat(best).isEqualTo(new Tuple("Ivanov", 240D));
     }
@@ -138,7 +140,7 @@ class AnalyzeByMapTest {
     @Test
     public void whenBestSubject() {
         Tuple best = Analyze.bestSubject(
-                List.of(
+                Stream.of(
                         new Pupil("Ivanov",
                                 List.of(
                                         new Subject("Math", 100),
@@ -160,7 +162,7 @@ class AnalyzeByMapTest {
                                         new Subject("Philosophy", 50)
                                 )
                         )
-                ).stream()
+                )
         );
         assertThat(best).isEqualTo(new Tuple("Math", 250D));
     }
