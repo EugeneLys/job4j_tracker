@@ -1,6 +1,7 @@
 package ru.job4j.condition;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -17,7 +18,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(373);
         String expected = "Да" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -26,7 +27,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(37573);
         String expected = "Да" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -35,7 +36,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(3);
         String expected = "Да" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -44,7 +45,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(11121);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -53,7 +54,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(211);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -62,7 +63,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(372);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -71,7 +72,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(55);
         String expected = "Да" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -80,7 +81,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(5335);
         String expected = "Да" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -89,7 +90,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(4455);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -98,7 +99,7 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(4555);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 
     @Test
@@ -107,6 +108,6 @@ public class Task49Test {
         System.setOut(new PrintStream(out));
         Task49.isPalindrome(100);
         String expected = "Нет" + ln;
-        assertThat(out.toString(), is(expected));
+        Assertions.assertEquals(out.toString(), expected);
     }
 }
