@@ -1,11 +1,8 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
-
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -46,31 +43,115 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        return null;
+        try (PreparedStatement statement =
+                     cn.prepareStatement("INSERT INTO items(name, created) VALUES (?, ?)",
+                             Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.execute();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    item.setId(generatedKeys.getInt(1));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
     public boolean replace(int id, Item item) {
-        return false;
+        executePrepared(
+                String.format("update items set name = '%s' where id = %s;",
+                        item.getName(), id)
+        );
+        return findById(id).getName().equals(item.getName());
     }
 
     @Override
     public void delete(int id) {
-
+        executePrepared(String.format("delete from items where id = %s;", id));
     }
 
     @Override
     public List<Item> findAll() {
-        return null;
+        List<Item> list = new ArrayList<>();
+        try {
+            PreparedStatement statement = cn.prepareStatement("select * from items;");
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    list.add(new Item(
+                            resultSet.getInt("id"),
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
     public List<Item> findByName(String key) {
-        return null;
+        List<Item> list = new ArrayList<>();
+        try {
+            PreparedStatement statement
+                    = cn.prepareStatement(
+                            String.format("select * from items where name = '%s';", key)
+            );
+            try (ResultSet resultSet
+                         = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    if (resultSet.getString("name").equals(key)) {
+                        list.add(new Item(
+                                resultSet.getInt("id"),
+                                resultSet.getString("name"),
+                                resultSet.getTimestamp("created").toLocalDateTime()
+                        ));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
     public Item findById(int id) {
-        return null;
+        Item rsl = null;
+        try {
+            PreparedStatement statement
+                    = cn.prepareStatement("select * from items where id = ?;");
+            statement.setInt(1, id);
+            try (ResultSet resultSet
+                         = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    if (resultSet.getInt("id") == id) {
+                        rsl = new Item(
+                                resultSet.getInt("id"),
+                                resultSet.getString("name"),
+                                resultSet.getTimestamp("created").toLocalDateTime()
+                        );
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rsl;
+    }
+
+    public void executePrepared(String sql) {
+        try {
+            PreparedStatement statement
+                    = cn.prepareStatement(sql);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
