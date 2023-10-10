@@ -73,7 +73,7 @@ public class Item implements Comparable<Item> {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && name.equals(item.name) && created == item.created;
+        return id == item.id && name.equals(item.name) && created.equals(item.created);
     }
 
     @Override
