@@ -23,7 +23,8 @@ public class SqlTrackerTest {
 
     @BeforeAll
     public static void initConnection() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("db/liquibase_test.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader()
+                .getResourceAsStream("db/liquibase_test.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -83,8 +84,8 @@ public class SqlTrackerTest {
         Item item2 = new Item("item2");
         tracker.add(item);
         tracker.add(item2);
-        List<Item> list
-                = List.of(new Item(item.getId(), item.getName()), new Item(item2.getId(), item2.getName()));
+        List<Item> list = List.of(new Item(item.getId(), item.getName()),
+                new Item(item2.getId(), item2.getName()));
         assertThat(tracker.findAll().equals(list)).isTrue();
     }
 
