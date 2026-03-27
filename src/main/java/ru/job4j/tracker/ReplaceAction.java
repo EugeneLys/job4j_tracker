@@ -20,7 +20,7 @@ public class ReplaceAction implements UserAction {
         Item item = new Item(name);
         tracker.replace(id, item);
         if (tracker.findById(id).getName().equals(name)) {
-            out.println("Item sucessfully replaced.");
+            out.println("Item successfully replaced.");
         } else {
             out.println("Ошибка замены заявки.");
         }

@@ -19,6 +19,8 @@
             <id>test</id>
             <properties>
                 <liquibase.config>src/main/resources/db/liquibase_test.properties</liquibase.config>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -76,6 +78,12 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.2.222</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
