@@ -69,8 +69,7 @@ public class ActionTest {
         String ln = System.lineSeparator();
         Assertions.assertEquals(output.toString(),
                 "=== Find item by id ===" + ln
-                        + "Item{id=1, name='Item', created=" + item.getCreated().format(formatter)
-                        + "}" + ln);
+                        + "Item(id=1, name=Item, created=" + item.getCreated() + ")" + ln);
     }
 
     @Test
@@ -86,7 +85,6 @@ public class ActionTest {
         String ln = System.lineSeparator();
         Assertions.assertEquals(output.toString(),
                 "=== Find item by name ===" + ln
-                        + "Item{id=1, name='Item', created=" + item.getCreated().format(formatter)
-                        + "}" + ln);
+                        + "Item(id=1, name=Item, created=" + item.getCreated() + ")" + ln);
     }
 }
