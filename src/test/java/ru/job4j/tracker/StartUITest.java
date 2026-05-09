@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 public class StartUITest {
 
@@ -30,7 +30,7 @@ public class StartUITest {
                         + "0. Replace Item" + ln
                         + "1. Exit program" + ln
                         + "=== Replace item ===" + ln
-                        + "Item sucessfully replaced." + ln
+                        + "Item successfully replaced." + ln
                         + "Menu:" + ln
                         + "0. Replace Item" + ln
                         + "1. Exit program" + ln
