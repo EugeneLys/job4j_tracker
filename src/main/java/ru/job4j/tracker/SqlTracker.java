@@ -69,7 +69,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public boolean replace(int id, Item item) {
+    public boolean replace(Integer id, Item item) {
         executePrepared(
                 String.format("update items set name = '%s' where id = %s;",
                         item.getName(), id)
@@ -78,7 +78,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Integer id) {
         executePrepared(String.format("delete from items where id = %s;", id));
     }
 
@@ -121,7 +121,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public Item findById(int id) {
+    public Item findById(Integer id) {
         Item rsl = null;
         try {
             PreparedStatement statement
